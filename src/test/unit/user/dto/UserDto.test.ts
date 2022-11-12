@@ -6,6 +6,5 @@ test('it should return undefined password to user dtos', () => {
     email: 'jhon@test.com'
   });
 
-  // @ts-ignore
-  expect(userDto.password).toBeUndefined();
+  expect(userDto.get()).not.toHaveProperty('password');
 });
