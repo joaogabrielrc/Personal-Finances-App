@@ -1,0 +1,11 @@
+# dependencies
+node_modules/
+dist/
+coverage/
+
+# environments
+.env
+.env.test
+
+# VSCode 
+.vscode/
