@@ -12,7 +12,9 @@ function errorHandlerMiddleware(
     return response.status(error.statusCode).json({
       message: error.message
     });
-  }  
+  }
+
+  console.log(error);
 
   return response
     .status(StatusCodes.INTERNAL_SERVER_ERROR)

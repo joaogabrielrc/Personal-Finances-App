@@ -1,3 +1,4 @@
+import prismaClient from '../database/data-source';
 import { AccountProps } from './Account';
 
 export interface IAccountRepository {
@@ -6,7 +7,12 @@ export interface IAccountRepository {
 
 class AccountRepository implements IAccountRepository {
   async save(account: AccountProps) {
-    throw new Error('Method not implemented.');
+    await prismaClient.account.create({
+      data: {
+        id: account.id,
+        userId: account.user.id
+      }
+    });
   }
 }
 

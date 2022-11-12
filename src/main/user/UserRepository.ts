@@ -1,3 +1,4 @@
+import prismaClient from '../database/data-source';
 import { UserProps } from './User';
 
 export interface IUserRepository {
@@ -6,12 +7,12 @@ export interface IUserRepository {
 }
 
 class UserRepository implements IUserRepository {
-  findByEmail(email: string): Promise<UserProps> {
-    throw new Error('Method not implemented.');
+  async findByEmail(email: string): Promise<UserProps> {
+    return await prismaClient.user.findUnique({ where: { email } });
   }
 
   async save(user: UserProps): Promise<void> {
-    throw new Error('Method not implemented.');
+    await prismaClient.user.create({ data: user });
   }
 }
 
