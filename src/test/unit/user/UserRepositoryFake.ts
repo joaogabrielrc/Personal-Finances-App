@@ -8,7 +8,7 @@ class UserRepositoryFake implements IUserRepository {
     return this.users.find(user => user.email === email);
   }
 
-  save(user: UserProps): void {
+  async save(user: UserProps): Promise<void> {
     this.users.push(user);
   }
 }

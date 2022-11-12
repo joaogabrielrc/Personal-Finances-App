@@ -1,20 +1,18 @@
 import { Router } from 'express';
 import methodNotAllowedError from '../middleware/method-not-allowed';
-import accountFactory from './accountFactory';
+import AccountFactory from './AccountFactory';
+import accountFormMiddleware from '../middleware/account/account-form-validation';
 
 const accountRouter = Router();
+const accountFactory = new AccountFactory();
 
 accountRouter
   .route('/')
-  // .get((request, response) => userFactory().getList(request, response))
-  .post((request, response) => accountFactory().create(request, response))
+  .post(accountFormMiddleware, (request, response) =>
+    accountFactory.create(request, response)
+  )
   .all(methodNotAllowedError);
 
-accountRouter
-  .route('/:id')
-  // .get((request, response) => userFactory().getDetail(request, response))
-  // .patch((request, response) => userFactory().update(request, response))
-  // .delete((request, response) => userFactory().delete(request, response))
-  .all(methodNotAllowedError);
+accountRouter.route('/:id').all(methodNotAllowedError);
 
 export default accountRouter;

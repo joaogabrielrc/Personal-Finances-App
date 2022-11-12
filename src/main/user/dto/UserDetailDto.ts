@@ -1,19 +1,19 @@
 export interface UserDetailDtoProps {
   readonly id: string;
   email: string;
+  firstName: string;
+  lastName: string;
 }
 
 class UserDetailDto {
   private props: UserDetailDtoProps;
 
   constructor(props: UserDetailDtoProps) {
-    this.props = this.clean(props);
-  }
-
-  private clean(props: UserDetailDtoProps): UserDetailDtoProps {
-    return {
+    this.props = {
       id: props.id,
-      email: props.email
+      email: props.email,
+      firstName: props.firstName,
+      lastName: props.lastName
     };
   }
 

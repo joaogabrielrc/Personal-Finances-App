@@ -1,36 +1,27 @@
-import { BadRequestError } from '../../error';
 import UserCreationDto, {
   UserCreationDtoProps
 } from '../../user/dto/UserCreationDto';
-import User, { UserProps } from '../../user/User';
 
 export interface AccountCreationDtoProps {
-  user: UserProps;
+  userForm: UserCreationDtoProps;
 }
 
 class AccountCreationDto {
   private props: AccountCreationDtoProps;
 
   constructor(props: AccountCreationDtoProps) {
-    this.props = this.clean(props);
-  }
-
-  private clean(props: AccountCreationDtoProps): AccountCreationDtoProps {
-    const { user } = props;
-    return {
-      user: this.generateUser(user ?? Object())
+    this.props = {
+      userForm: this.generateUserForm(props.userForm ?? Object())
     };
   }
 
-  generateUser(user: UserCreationDtoProps): UserProps {
-    try {
-      const userForm = new UserCreationDto(user);
-      return new User(userForm.get()).get();
-    } catch (error) {
-      throw new BadRequestError({
-        user: error.get()
-      });
-    }
+  generateUserForm(user: UserCreationDtoProps): UserCreationDtoProps {
+    const userForm = new UserCreationDto(user);
+    return userForm.get();
+  }
+
+  public get userForm(): UserCreationDtoProps {
+    return this.props.userForm;
   }
 
   public get(): AccountCreationDtoProps {

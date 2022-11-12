@@ -12,6 +12,8 @@ function errorHandlerMiddleware(
     return response.status(error.statusCode).json(error.get());
   }
 
+  console.log(error);
+
   return response
     .status(StatusCodes.INTERNAL_SERVER_ERROR)
     .send('Something went wrong');

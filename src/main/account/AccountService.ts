@@ -1,10 +1,10 @@
 import UserService from '../user/UserService';
 import { AccountProps } from './Account';
-import AccountRepository from './AccountRepository';
+import { IAccountRepository } from './AccountRepository';
 
 class AccountService {
   constructor(
-    private accountRepository: AccountRepository,
+    private accountRepository: IAccountRepository,
     private userService: UserService
   ) {}
 

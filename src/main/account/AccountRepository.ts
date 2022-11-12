@@ -1,7 +1,7 @@
 import { AccountProps } from './Account';
 
 export interface IAccountRepository {
-  save(user: AccountProps): void;
+  save(user: AccountProps): Promise<void>;
 }
 
 class AccountRepository implements IAccountRepository {

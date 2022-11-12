@@ -1,24 +1,27 @@
 import { v4 as uuid } from 'uuid';
 import bcrypt from 'bcryptjs';
+import { UserCreationDtoProps } from './dto/UserCreationDto';
 
 export interface UserProps {
   readonly id: string;
   email: string;
   password: string;
+  firstName: string;
+  lastName: string;
 }
+
+type UserFormProps = UserCreationDtoProps;
 
 class User {
   private props: UserProps;
 
-  constructor(props: Omit<UserProps, 'id'>) {
-    this.props = this.clean(props);
-  }
-
-  private clean(props: Omit<UserProps, 'id'>): UserProps {
-    return {
+  constructor(props: UserFormProps) {
+    this.props = {
       id: this.generateId(),
       email: props.email,
-      password: this.generateHashedPassword(props.password)
+      password: this.generateHashedPassword(props.password),
+      firstName: props.firstName,
+      lastName: props.lastName
     };
   }
 
@@ -37,6 +40,14 @@ class User {
 
   public get email(): string {
     return this.props.email;
+  }
+
+  public get firstName(): string {
+    return this.props.firstName;
+  }
+
+  public get lastName(): string {
+    return this.props.lastName;
   }
 
   public get(): UserProps {

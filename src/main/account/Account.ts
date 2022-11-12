@@ -1,23 +1,32 @@
 import { v4 as uuid } from 'uuid';
-import { UserProps } from '../user/User';
+import { UserCreationDtoProps } from '../user/dto/UserCreationDto';
+import User, { UserProps } from '../user/User';
+import { AccountCreationDtoProps } from './dto/AccountCreationDto';
 
 export interface AccountProps {
   readonly id: string;
   user: UserProps;
 }
 
+type AccountFormProps = AccountCreationDtoProps;
+
 class Account {
   private props: AccountProps;
 
-  constructor(props: Omit<AccountProps, 'id'>) {
+  constructor(props: AccountFormProps) {
     this.props = {
       id: this.generateId(),
-      user: props.user
+      user: this.generateUser(props.userForm ?? Object())
     };
   }
 
   generateId(): string {
     return uuid();
+  }
+
+  generateUser(userForm: UserCreationDtoProps): UserProps {
+    const user = new User(userForm);
+    return user.get();
   }
 
   public get id(): string {
