@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { Request, Response, NextFunction } from 'express';
 import { CustomAPIError } from '../error';
 import { StatusCodes } from 'http-status-codes';
