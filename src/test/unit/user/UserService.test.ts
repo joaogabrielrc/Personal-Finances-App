@@ -55,7 +55,7 @@ describe('User Service Test', () => {
 
     await userService.save(user.get());
     await expect(userService.save(user.get())).rejects.toThrow(
-      new BadRequestError(null)
+      new BadRequestError('User already exists')
     );
   });
 });

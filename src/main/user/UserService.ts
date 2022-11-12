@@ -13,9 +13,7 @@ class UserService {
     const userExists = await this.userRepository.findByEmail(user.email);
 
     if (userExists) {
-      throw new BadRequestError({
-        user: 'User already exists'
-      });
+      throw new BadRequestError('User already exists');
     }
 
     await this.userRepository.save(user);

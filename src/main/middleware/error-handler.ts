@@ -9,10 +9,10 @@ function errorHandlerMiddleware(
   next: NextFunction
 ) {
   if (error instanceof CustomAPIError) {
-    return response.status(error.statusCode).json(error.get());
-  }
-
-  console.log(error);
+    return response.status(error.statusCode).json({
+      message: error.message
+    });
+  }  
 
   return response
     .status(StatusCodes.INTERNAL_SERVER_ERROR)
