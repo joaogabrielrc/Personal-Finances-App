@@ -20,7 +20,7 @@ Add your database settings:
 ```
 # server/.env
 
-PORT=
+PORT=8080
 
 POSTGRES_HOST=
 POSTGRES_USER=
