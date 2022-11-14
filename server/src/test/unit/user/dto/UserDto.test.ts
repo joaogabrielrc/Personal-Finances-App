@@ -1,3 +1,4 @@
+// @ts-nocheck
 import UserDto from '../../../../main/user/dto/UserDto';
 
 describe('User Dto Test', () => {

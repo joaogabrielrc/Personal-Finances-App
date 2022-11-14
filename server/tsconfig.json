@@ -4,7 +4,7 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "module": "commonjs",
-    "rootDir": "./src",
+    "rootDir": "./src/main",
     "outDir": "./dist",
     "allowJs": true,
     "removeComments": true,
@@ -12,5 +12,6 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true
   },
-  "exclude": ["jest.config.ts"]
+  "include": ["src/main"],
+  "exclude": ["jest.config.ts", "src/test", "node_modules", "dist"]
 }

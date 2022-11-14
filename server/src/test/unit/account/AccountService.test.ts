@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Account from '../../../main/account/Account';
 import AccountService from '../../../main/account/AccountService';
 import AccountCreationDto from '../../../main/account/dto/AccountCreationDto';

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import app from '../../../main/App';
 import request from 'supertest';
 import prismaClient from '../../../main/database/data-source';

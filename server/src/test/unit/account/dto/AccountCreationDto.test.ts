@@ -1,3 +1,4 @@
+// @ts-nocheck
 import AccountCreationDto from '../../../../main/account/dto/AccountCreationDto';
 
 describe('Account Creation Dto Test', () => {

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { BadRequestError } from '../../../main/error';
 import UserCreationDto from '../../../main/user/dto/UserCreationDto';
 import User from '../../../main/user/User';
