@@ -21,6 +21,7 @@ Add your database settings:
 # server/.env
 
 PORT=8080
+JWT_SECRET=secret-jwt-key
 
 POSTGRES_HOST=
 POSTGRES_USER=
