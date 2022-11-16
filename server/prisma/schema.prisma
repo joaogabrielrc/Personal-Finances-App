@@ -8,10 +8,12 @@ datasource db {
 }
 
 model Account {
-  id        String   @id
-  user      User     @relation(fields: [userId], references: [id])
-  userId    String   @unique @map("user_id")
-  createdAt DateTime @default(now()) @map("created_at")
+  id        String    @id
+  user      User      @relation(fields: [userId], references: [id])
+  userId    String    @unique @map("user_id")
+  createdAt DateTime  @map("created_at")
+  incomes   Income[]
+  expenses  Expense[]
 
   @@map("accounts")
 }
@@ -25,4 +27,28 @@ model User {
   account   Account?
 
   @@map("users")
+}
+
+model Income {
+  id          String   @id
+  category    String
+  amount      Decimal
+  description String?
+  createdAt   DateTime @map("created_at")
+  account     Account  @relation(fields: [accountId], references: [id])
+  accountId   String   @map("account_id")
+
+  @@map("incomes")
+}
+
+model Expense {
+  id          String   @id
+  category    String
+  amount      Decimal
+  description String?
+  createdAt   DateTime @map("created_at")
+  account     Account  @relation(fields: [accountId], references: [id])
+  accountId   String   @map("account_id")
+
+  @@map("expenses")
 }

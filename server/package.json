@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon --exec ts-node --transpile-only src/main/server.ts",
     "build": "tsc",
-    "test": "dotenv -e .env.test prisma migrate deploy && dotenv -e .env.test jest"
+    "test": "jest"
   },
   "devDependencies": {
     "@types/bcryptjs": "2.4.2",

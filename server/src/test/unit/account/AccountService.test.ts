@@ -10,23 +10,23 @@ describe('Account Service Test', () => {
   let accountService: AccountService;
 
   beforeAll(() => {
-    const accountRepository = new AccountRepositoryFake();
     const userRepository = new UserRepositoryFake();
     const userService = new UserService(userRepository);
-    accountService = new AccountService(accountRepository, userService);
+    const accountRepository = new AccountRepositoryFake();
+    accountService = new AccountService(userService, accountRepository);
   });
 
   it('should be able to create a new account', async () => {
     const accountForm = new AccountCreationDto({
-      userForm: {
+      user: {
         email: 'jhon@test.com',
-        password: '123456',
+        password: '12345678',
         firstName: 'Jhon',
         lastName: 'Doe'
       }
     });
 
-    const account = new Account(accountForm.get());
+    const account = new Account(accountForm.get());    
     await accountService.save(account.get());
 
     expect(account.id).toBeTruthy();

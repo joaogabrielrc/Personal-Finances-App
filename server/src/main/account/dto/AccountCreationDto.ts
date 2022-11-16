@@ -1,9 +1,7 @@
-import UserCreationDto, {
-  UserCreationDtoProps
-} from '../../user/dto/UserCreationDto';
+import { UserProps } from '../../user/User';
 
 export interface AccountCreationDtoProps {
-  userForm: UserCreationDtoProps;
+  user: UserProps;
 }
 
 class AccountCreationDto {
@@ -11,17 +9,8 @@ class AccountCreationDto {
 
   constructor(props: AccountCreationDtoProps) {
     this.props = {
-      userForm: this.generateUserForm(props.userForm ?? Object())
+      user: props.user
     };
-  }
-
-  generateUserForm(user: UserCreationDtoProps): UserCreationDtoProps {
-    const userForm = new UserCreationDto(user);
-    return userForm.get();
-  }
-
-  public get userForm(): UserCreationDtoProps {
-    return this.props.userForm;
   }
 
   public get(): AccountCreationDtoProps {

@@ -1,14 +1,14 @@
-import AccountRepository from './AccountRepository';
 import UserRepository from '../user/UserRepository';
 import UserService from '../user/UserService';
-import AccountService from './AccountService';
 import AccountController from './AccountController';
+import AccountRepository from './AccountRepository';
+import AccountService from './AccountService';
 
 function accountFactory() {
-  const accountRepository = new AccountRepository();
   const userRepository = new UserRepository();
   const userService = new UserService(userRepository);
-  const accountService = new AccountService(accountRepository, userService);
+  const accountRepository = new AccountRepository();
+  const accountService = new AccountService(userService, accountRepository);
   const accountController = new AccountController(accountService);
   return accountController;
 }

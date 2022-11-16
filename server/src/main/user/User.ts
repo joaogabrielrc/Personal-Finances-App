@@ -1,5 +1,5 @@
 import { v4 as uuid } from 'uuid';
-import bcrypt from 'bcryptjs';
+import bcryptjs from 'bcryptjs';
 import { UserCreationDtoProps } from './dto/UserCreationDto';
 
 export interface UserProps {
@@ -19,7 +19,7 @@ class User {
     this.props = {
       id: this.generateId(),
       email: props.email,
-      password: this.generateHashedPassword(props.password),
+      password: this.generatePasswordHash(props.password),
       firstName: props.firstName,
       lastName: props.lastName
     };
@@ -29,9 +29,10 @@ class User {
     return uuid();
   }
 
-  private generateHashedPassword(password: string): string {
-    const salt = bcrypt.genSaltSync(10);
-    return bcrypt.hashSync(password, salt);
+  private generatePasswordHash(password: string): string {
+    const salt = bcryptjs.genSaltSync(10);
+    const hashedPassword = bcryptjs.hashSync(password, salt);
+    return hashedPassword;
   }
 
   public get id(): string {
@@ -40,6 +41,10 @@ class User {
 
   public get email(): string {
     return this.props.email;
+  }
+
+  public get password(): string {
+    return this.props.password;
   }
 
   public get firstName(): string {

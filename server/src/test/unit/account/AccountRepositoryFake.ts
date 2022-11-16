@@ -4,8 +4,8 @@ import { IAccountRepository } from '../../../main/account/AccountRepository';
 class AccountRepositoryFake implements IAccountRepository {
   private accounts: AccountProps[] = [];
 
-  async save(user: AccountProps): Promise<void> {
-    this.accounts.push(user);
+  async save(account: AccountProps): Promise<void> {
+    this.accounts.push(account);
   }
 }
 

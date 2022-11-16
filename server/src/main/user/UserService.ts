@@ -1,15 +1,11 @@
 import { BadRequestError } from '../error';
 import { UserProps } from './User';
-import { IUserRepository } from './UserRepository';
+import UserRepository from './UserRepository';
 
 class UserService {
-  constructor(private userRepository: IUserRepository) {}
+  constructor(private userRepository: UserRepository) {}
 
-  async findByEmail(email: string): Promise<UserProps> {
-    return this.userRepository.findByEmail(email);
-  }
-
-  async save(user: UserProps) {
+  async save(user: UserProps): Promise<void> {
     const userExists = await this.userRepository.findByEmail(user.email);
 
     if (userExists) {

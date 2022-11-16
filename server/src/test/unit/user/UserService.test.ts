@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { BadRequestError } from '../../../main/error';
 import UserCreationDto from '../../../main/user/dto/UserCreationDto';
 import User from '../../../main/user/User';
@@ -11,23 +10,7 @@ describe('User Service Test', () => {
   beforeAll(() => {
     const userRepository = new UserRepositoryFake();
     userService = new UserService(userRepository);
-  });
-
-  it('should return a user by email', async () => {
-    const userForm = new UserCreationDto({
-      email: 'jhon1@test.com',
-      password: '123456',
-      firstName: 'Jhon',
-      lastName: 'Doe'
-    });
-
-    const user = new User(userForm.get());
-    await userService.save(user.get());
-
-    const userByEmail = await userService.findByEmail(user.email);
-
-    expect(userByEmail).toEqual(user.get());
-  });
+  });  
 
   it('should be able to create a new user', async () => {
     const userForm = new UserCreationDto({

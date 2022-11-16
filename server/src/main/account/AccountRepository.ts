@@ -1,16 +1,17 @@
-import prismaClient from '../database/data-source';
+import prismaClient from '../database/connect';
 import { AccountProps } from './Account';
 
 export interface IAccountRepository {
-  save(user: AccountProps): Promise<void>;
+  save(account: AccountProps): Promise<void>;
 }
 
 class AccountRepository implements IAccountRepository {
-  async save(account: AccountProps) {
+  async save(account: AccountProps): Promise<void> {
     await prismaClient.account.create({
       data: {
         id: account.id,
-        userId: account.user.id
+        userId: account.user.id,
+        createdAt: account.createdAt
       }
     });
   }

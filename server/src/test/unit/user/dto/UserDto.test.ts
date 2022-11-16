@@ -1,4 +1,3 @@
-// @ts-nocheck
 import UserDto from '../../../../main/user/dto/UserDto';
 
 describe('User Dto Test', () => {
@@ -6,7 +5,9 @@ describe('User Dto Test', () => {
     const userDto = new UserDto({
       id: 'u1',
       email: 'jhon@test.com',
-      firstName: 'Jhon'
+      password: '123456',
+      firstName: 'Jhon',
+      lastName: 'Doe'
     });
 
     expect(userDto.get()).not.toHaveProperty('password');

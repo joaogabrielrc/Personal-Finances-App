@@ -1,3 +1,5 @@
+import { UserProps } from '../User';
+
 export interface UserDtoProps {
   readonly id: string;
   email: string;
@@ -7,7 +9,7 @@ export interface UserDtoProps {
 class UserDto {
   private props: UserDtoProps;
 
-  constructor(props: UserDtoProps) {
+  constructor(props: UserProps) {
     this.props = {
       id: props.id,
       email: props.email,

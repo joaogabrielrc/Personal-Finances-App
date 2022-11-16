@@ -1,17 +1,16 @@
 import { Request, Response, NextFunction } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import AccountCreationDto from '../../account/dto/AccountCreationDto';
+import UserCreationDto from '../../user/dto/UserCreationDto';
+import User from '../../user/User';
 
-function accountFormMiddleware(
+function accountFormMiddleware(  
   request: Request,
   response: Response,
   next: NextFunction
 ) {
-  const accountForm = new AccountCreationDto({
-    userForm: request.body.user
-  });
-
-  const { email, password, firstName, lastName } = accountForm.userForm;
+  const userForm = new UserCreationDto(request.body.user);
+  const { email, password, firstName, lastName } = userForm.get();
 
   if (!email || !password || !firstName || !lastName) {
     return response.status(StatusCodes.BAD_REQUEST).json({
@@ -24,6 +23,14 @@ function accountFormMiddleware(
     });
   }
 
+  if (password.length < 8) {
+    return response.status(StatusCodes.BAD_REQUEST).json({
+      user: {
+        password: 'Password must be last eight characters long'
+      }
+    });
+  }
+
   if (!email.includes('@')) {
     return response.status(StatusCodes.BAD_REQUEST).json({
       user: {
@@ -31,6 +38,9 @@ function accountFormMiddleware(
       }
     });
   }
+
+  const user = new User(userForm.get());
+  const accountForm = new AccountCreationDto({ user: user.get() });
 
   request.body = accountForm.get();
   next();

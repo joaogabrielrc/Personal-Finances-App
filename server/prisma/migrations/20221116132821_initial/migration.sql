@@ -2,7 +2,7 @@
 CREATE TABLE "accounts" (
     "id" TEXT NOT NULL,
     "user_id" TEXT NOT NULL,
-    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "created_at" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "accounts_pkey" PRIMARY KEY ("id")
 );
