@@ -5,10 +5,10 @@ import ForbiddenError from '../../error/ForbiddenError';
 
 export interface AuthRequest extends Request {
   authUser?: {
-    id: string,
-    email: string,
-    iat: number,
-    exp: number
+    id: string;
+    email: string;
+    iat: number;
+    exp: number;
   };
 }
 
