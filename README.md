@@ -1,8 +1,7 @@
 <h1 align="center">Personal Finances App - Node.js</h1>
 
 <p align="center">
-  <img src="https://img.shields.io/static/v1?label=node&message=18.12.0&color=7159c1&style=plastic" />  
-  <img src="https://img.shields.io/static/v1?label=npm&message=8.19.2&color=7159c1&style=plastic" />  
+  <img src="https://img.shields.io/static/v1?label=node&message=18.12.0&color=7159c1&style=plastic" />     
   <img src="https://img.shields.io/static/v1?label=license&message=MIT&color=00e200&style=plastic" />
 </p>
 
@@ -15,7 +14,7 @@ this project was built using [Node v18.x] and uses the following technologies:
 - [Prisma](https://www.prisma.io/) - For manipulate the data source.
 - [JWT](https://jwt.io/) - For security in the transmission of information
 - [Docker](https://www.docker.com/) - For run the project.
-- [npm](https://www.npmjs.com/) - For dependency management.
+- [Yarn](https://yarnpkg.com/) - For dependency management.
 
 ## :rocket: Running the project with Docker
 
@@ -30,7 +29,7 @@ Add your database credentials:
 # server/.env
 
 PORT=8080
-JWT_SECRET=secret-jwt-key
+JWT_SECRET='secret-jwt-key'
 
 POSTGRES_HOST=
 POSTGRES_USER=
