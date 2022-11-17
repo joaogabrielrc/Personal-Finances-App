@@ -6,6 +6,6 @@ while ! nc -z $POSTGRES_HOST $POSTGRES_PORT; do
 done
 echo "PostgreSQL started"
 
-npx prisma migrate deploy
+yarn prisma migrate deploy
 
 exec "$@"

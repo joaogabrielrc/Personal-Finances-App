@@ -14,13 +14,14 @@ RUN sed -i 's/\r$//g' /usr/src/app/entrypoint.sh
 RUN chmod +x /usr/src/app/entrypoint.sh
 
 # copy configuration files
-COPY package*.json ./
+COPY package.json ./
+COPY yarn.lock ./
 COPY prisma ./prisma/
 COPY tsconfig.json ./
 
 # install dependencies and migrate database
-RUN npm install
-RUN npx prisma generate
+RUN yarn
+RUN yarn prisma generate
 
 # copy all files
 COPY . .
@@ -28,4 +29,4 @@ COPY . .
 # run the program
 EXPOSE 8080
 ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
-CMD npm run dev
+CMD yarn dev
