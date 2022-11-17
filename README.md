@@ -2,6 +2,7 @@
 
 <p align="center">
   <img src="https://img.shields.io/static/v1?label=node&message=18.12.0&color=7159c1&style=plastic" />     
+  <img src="https://img.shields.io/static/v1?label=react&message=18.0.25&color=7159c1&style=plastic" />     
   <img src="https://img.shields.io/static/v1?label=license&message=MIT&color=00e200&style=plastic" />
 </p>
 
